@@ -1,0 +1,3 @@
+function solve(Object, array) {
+    
+}
