@@ -1,29 +1,23 @@
-function solve(array) {
+function rectangle(array) {
     let data = [];
+    let trimmedLine;
     for (const line of array) {
-        let cleanedLine = '';
-        let lineToChars = line.toChararray();
-        for (const symbol of lineToChars) {
-            if(symbol === '|') {
-                lineToChars.splice(lineToChars.indexOf(symbol));
-            }
-        }
-        cleanedLine = lineToChars.join();
-        let dataLine = cleanedLine.split(/\s+/);
-        data.push(dataLine);
+        trimmedLine = line.slice(2, line.length - 2);
+        data.push(trimmedLine.split(' | '));
     }
     let output = [];
-    for(let row = 1; row < data.length; row++) {
-        let town = {
-            town: data[row][0],
-            latitude: data[row][1],
-            longtitude: data[row][2]
-        }
+    for (let row = 1; row < data.length; row++) {
+        let town = { Town: '', Latitude: 0, Longitude: 0 };
+        town.Town = data[row][0];
+        town.Latitude = +Number(data[row][1]).toFixed(2);
+        town.Longitude = +Number(data[row][2]).toFixed(2);
+
+
         output.push(town)
     }
-    console.log(JSON.stringify(output));
+    console.log(JSON.stringify(output)); 7
 }
 
-solve(['| Town | Latitude | Longitude |',
-    '| Sofia | 42.696552 | 23.32601 |',
-    '| Beijing | 39.913818 | 116.363625 |']);
+rectangle(['| Town | Latitude | Longitude |',
+    '| Veliko Turnovo | 43.0757 | 25.6172 |',
+    '| Monatevideo | 34.50 | 56.11 |']);
