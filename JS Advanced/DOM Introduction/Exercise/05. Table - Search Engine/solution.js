@@ -1,44 +1,28 @@
 function solve() {
    document.querySelector('#searchBtn').addEventListener('click', onClick);
-   
-   let COLUMNS = 3;
+
    function onClick() {
-      let tbodyElements = document.getElementsByTagName('tbody');
-      let tdElements = [];
-     
-      let tbodyElement = tbodyElements[0];
-      let trElements = tbodyElement.getElementsByTagName('tr');
-     
-      for (const element of trElements) {
-         tdElements.push(element);
-      }
-      let data = [];
-      for (const tdElement of tdElements) {
-         data.push(tdElement.getElementsByTagName('td'));
+      //clean selected elements before re-click
+      let selectedElements = document.querySelectorAll('.select');
+      for (const element of selectedElements) {
+         element.classList.remove('select');   
       }
       
+
       let searchWord = document.getElementById('searchField').value;
       document.getElementById('searchField').value = '';
-      let selectedElements = document.getElementsByClassName('select');
-      //clean selected elements before re-click
-      for (const element of selectedElements) {
-         element.classList.remove('select');
-      }
 
-      for(let row = 0; row < data.length; row++) {
-         for(let col = 0; col < COLUMNS; col++) {
-            if(data[row][col].textContent.includes(searchWord) && searchWord.length > 0) {
-               let rowElement = data[row];
-               for (const singleCol of rowElement) {
-                  singleCol.classList.add('select');
-               }
+
+      let data = document.querySelectorAll('tbody tr');
+      for (let col = 0; col < data.length; col++) {
+         let arr = data[col].getElementsByTagName('td');
          
+         for (const singleElement of arr) {
+            if(singleElement.textContent.includes(searchWord) && searchWord.length > 0) {
+               data[col].classList.add('select');
             }
-            
          }
       }
       selectedElements = document.getElementsByClassName('select');
-      
-      
    }
 }
