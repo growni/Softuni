@@ -1,8 +1,8 @@
-function findGreatestCommonDivisor(num1, num2) {
-    if(num2 != 0) {
-        return findGreatestCommonDivisor(num2, num1 % num2);
+function findGreatestCommonDivisor(a, b) {
+    if(b != 0) {
+        return findGreatestCommonDivisor(b, a % b);
     } else {
-        console.log(num1);
+        console.log(a);
     }
 }
 findGreatestCommonDivisor(15, 5);
