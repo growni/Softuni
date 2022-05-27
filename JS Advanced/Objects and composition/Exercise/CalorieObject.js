@@ -1,7 +1,6 @@
 function solve(array) {
-    const food = {
-
-    }
+    const food = {}
+    
     let key = '';
     for (let f = 0; f < array.length; f++) {
 

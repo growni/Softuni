@@ -14,13 +14,13 @@ function solve(array) {
                 break;
         }
     }
-    if (arr.length == 0) {
-        console.log('Empty');
-    } else {
-        arr.forEach(number => console.log(number));
-    }
+    if (arr.length == 0 ? console.log('Empty') : arr.forEach(number => console.log(number))) {
+        
+    } 
 }
 
-solve(['remove',
+solve(['add',
+    'add',
     'remove',
-    'remove']);
+    'add',
+    'add']);
